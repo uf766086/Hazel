@@ -48,6 +48,8 @@ class DocumentController {
         // check if no content
         if (!document || document.markdown <= 0) { next(); return; }
 
+        this.autoLink(document);
+
         this._analyticsService.updateViewCount(slug);
         document.html = marked(document.markdown);
 
@@ -85,6 +87,16 @@ class DocumentController {
         res.render("edit", viewModel);
     }
 
+    autoLink(document) {
+        // check for links to set
+        const missingLinks = this._parserUtility.fetchMissingLinksFromMarkdown(document.markdown);
+        console.log(JSON.stringify(missingLinks, null, 2));
+        (missingLinks || []).forEach(link => {
+            let slug = this._storageProvider.titleToSlug(link.slice(1, -3));
+            document.markdown = document.markdown.replace(link, link.replace("()", "(/" + slug + ")"));
+        });
+    }
+
     /**
      * POST : Handle edit request
      */
@@ -101,16 +113,7 @@ class DocumentController {
         document.tags = req.body.tags.split(",");
         document.slug = slug;
 
-        // check for links to set
-        var missingLinks = this._parserUtility.fetchMissingLinksFromMarkdown(document.markdown);
-        if (missingLinks && missingLinks.length > 0) {
-            var pairs = _.chunk(missingLinks, 2);
-
-            _.forEach(pairs, (pair) => {
-                let slug = this._storageProvider.titleToSlug(pair[1]);
-                document.markdown = document.markdown.replace(pair[0], pair[0].replace("()", "(/" + slug + ")"));
-            });
-        }
+        //this.autoLink(document);
 
         // save document
         console.log("save: " + document.title);
