@@ -55,6 +55,7 @@ class DocumentController {
         viewModel.title = document.title;
         viewModel.relatedDocuments = this._fetchRelatedDocuments(viewModel.title, 5);
         viewModel.recentDocuments = this._fetchRecentDocuments(5);
+		viewModel.tags = document.tags;
         viewModel.config = this._config;
         // render content
         res.render("document", viewModel);
@@ -153,9 +154,10 @@ class DocumentController {
         console.log("creating new document");
 
         let document = new Document();
+		
         document.slug = "";
         document.title = "New document";
-
+		document.markdown = "## Problema\n	\n## Causa\n \n## Solución\n";
         let viewModel = new EditViewModel();
         viewModel.document = document;
         viewModel.title = document.title;
@@ -205,6 +207,7 @@ class DocumentController {
             .take(count)
             .value();
     }
+	
 }
 
 module.exports = DocumentController;

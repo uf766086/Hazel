@@ -11,6 +11,7 @@ class HomeViewModel {
         this.randomDocuments = [];
         this.popularDocuments = [];
         this.siteSections = [];
+		this.tags = [];
         this.config = {};
     }
 }

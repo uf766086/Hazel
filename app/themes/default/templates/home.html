@@ -49,6 +49,28 @@
 <!-- MAIN CONTENT -->
 <div class="container wrap main-section" id="wrap-main-section">
     <div id="content" class="content">
+		<div class="row bg">
+            <main class="main col-sm-12"  role="main">
+                <div class="row knowledge-base-row">
+                   <!-- TAGs -->
+                    <div class="kb-tag">
+                        <h2>
+                            Tags
+                        </h2>
+                        <% if(tags && tags.length > 0){%>
+                        <ul class="category-posts">
+                            <% for(var i = 0; i < tags.length; i++){ var tag = tags[i];%>
+                                    <span style="white-space:nowrap;"><i class="fa fa-tag fa-fw"></i> <a href="~<%= tag %>"><%= tag %></a></span>
+                            <% } %>
+                        </ul>
+                        <% } %>
+                    </div>
+
+                </div>
+            </main>
+            <!-- /.main -->
+            <div class="clearfix"></div>
+        </div>
         <% if(siteSections && siteSections.length > 0) { %>
         <div class="row bg">
             <main class="main col-sm-12"  role="main">

@@ -51,6 +51,20 @@
                     </ul>
                 </section>
                 <% } %>
+				
+				 <% if(tags && tags.length > 0){%>
+                <!-- Document Tags -->
+                <section class="widget widget_recent_entries">
+                    <h3 class="widget-title">Tags</h3>
+                    <ul>
+                        <% for(var i = 0; i < tags.length; i++){ var tag = tags[i];%>
+                        <li class="list-post pa-post-format">
+                            <span style="white-space:nowrap;"><i class="fa fa-tag  fa-fw"></i> <a href="~<%= tag %>"><%= tag %></a></span>
+                        </li>
+                        <% } %>
+                    </ul>
+                </section>
+                <% } %>
                 
                 <% if(recentDocuments && recentDocuments.length > 0){ %>
                 <!-- RECENT DOCUMENTS -->

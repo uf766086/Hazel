@@ -3,3 +3,6 @@ node_modules
 .DS_Store
 coverage/
 example/uploads/*
+app/uploads/980MARTE2-1477083864764.png
+app/uploads/t_519s-1477210061547.txt
+*.zip
