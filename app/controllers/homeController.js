@@ -33,7 +33,6 @@ class HomeController {
         viewModel.randomDocuments = this._fetchRandomDocuments(5);
         viewModel.popularDocuments = this._fetchPopularDocuments(5);
         viewModel.siteSections = this._fetchSiteSections();
-		viewModel.tags = this._fetchTags(100);
         viewModel.config = this._config;
 
         res.render("home", viewModel);
@@ -42,7 +41,7 @@ class HomeController {
 	/**
      * Fetch the tags
      */
-    _fetchTags(count) {
+    _fetchTags() {
         let documents = this._documents.all();
 		var tags = [];
 		for(var i = 0; i < documents.length; i++){

@@ -207,7 +207,6 @@ class DocumentController {
             .take(count)
             .value();
     }
-	
 }
 
 module.exports = DocumentController;
