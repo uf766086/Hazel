@@ -10,7 +10,7 @@ class DocumentParserUtility {
 
     constructor() {
         this._metaRegex = /<!--META (.*) -->/;
-        this._missingLinkRegex = /\[(.*)\]\(\)/;
+        this._missingLinkRegex = /\[(.*)\]\(\)/g;
     }
 
     /**
