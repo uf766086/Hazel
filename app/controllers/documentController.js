@@ -111,7 +111,7 @@ class DocumentController {
         let document = new Document();
         document.title = req.body.title;
         document.markdown = req.body.content;
-        document.tags = req.body.tags.split(",");
+        document.tags = document.tags = req.body.tags.replace(', ',',').replace(' ,',',').split(",");
         document.slug = slug;
 
         //this.autoLink(document);
