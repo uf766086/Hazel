@@ -157,7 +157,7 @@ class DocumentController {
 		
         document.slug = "";
         document.title = "New document";
-		document.markdown = "## Problema\n	\n## Causa\n \n## Solución\n";
+		
         let viewModel = new EditViewModel();
         viewModel.document = document;
         viewModel.title = document.title;
